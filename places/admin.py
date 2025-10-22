@@ -9,6 +9,6 @@ class PlaceImageInline(admin.TabularInline):
 
 @admin.register(Place)
 class PlaceAdmin(admin.ModelAdmin):
-    list_display = ('title', 'lat', 'lng')
+    list_display = ('title', 'lng', 'lat')
     search_fields = ('title',)
     inlines = [PlaceImageInline]
