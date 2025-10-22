@@ -38,8 +38,10 @@ ROOT_URLCONF = 'django_geomap.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'static/frontend']
-        ,
+        'DIRS': [
+            BASE_DIR / 'templates',
+            BASE_DIR / 'static/frontend',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
