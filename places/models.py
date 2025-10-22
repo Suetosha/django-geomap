@@ -22,11 +22,25 @@ class Place(models.Model):
 class PlaceImage(models.Model):
     place = models.ForeignKey(Place, related_name="images", on_delete=models.CASCADE)
     image = models.ImageField("Изображение", upload_to="images/")
+    position = models.PositiveIntegerField("Позиция", default=1)
 
     def __str__(self):
         return f"Изображение для {self.place.title}"
 
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            last = PlaceImage.objects.filter(place=self.place).order_by('-position').first()
+            self.position = last.position + 1 if last else 1
+        super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        pos = self.position
+        place_id = self.place_id
+        super().delete(*args, **kwargs)
+        PlaceImage.objects.filter(place_id=place_id, position__gt=pos).update(position=models.F('position') - 1)
+
     class Meta:
+        ordering = ["position"]
         verbose_name = "Изображение места"
         verbose_name_plural = "Изображения мест"
 
