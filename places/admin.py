@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django import forms
+from django.utils.html import format_html
 
 from .models import Place, PlaceImage
 
@@ -19,7 +20,17 @@ class PlaceImageInline(admin.TabularInline):
     model = PlaceImage
     form = PlaceImageInlineForm
     extra = 1
-    fields = ('image', 'position')
+    fields = ('image', 'preview', 'position')
+    readonly_fields = ('preview',)
+
+    def preview(self, obj):
+        if obj.image:
+            return format_html(
+                '<img src="{}" style="max-height:150px; max-width:170px; object-fit:contain;" />',
+                obj.image.url
+            )
+        return "-"
+    preview.short_description = "Превью"
 
 
 @admin.register(Place)
