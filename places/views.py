@@ -25,7 +25,7 @@ def places(request, place_id):
             place = Place.objects.get(placeId=place_id)
             place_json = PlaceDetailSerializer(place).serialize()
 
-            return render(request, "places.html", {"place_json": json.dumps(place_json, ensure_ascii=False)})
+            return JsonResponse(place_json)
         else:
             raise Exception("Method not supported")
 

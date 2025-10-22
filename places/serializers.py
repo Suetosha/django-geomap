@@ -13,7 +13,7 @@ class PlaceGeoJSONSerializer:
             "properties": {
                 "title": place.title,
                 "placeId": place.placeId,
-                "detailsUrl": ''
+                "detailsUrl": f"/places/{place.placeId}/"
             }
         }
 
