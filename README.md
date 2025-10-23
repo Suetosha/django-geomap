@@ -41,11 +41,17 @@ DB_PORT=5432
 ```bash
 docker-compose up -d
 ```
-```
+
 ### 4. Создание django admin superuser через docker контейнер
+```
 docker exec -it container_id python manage.py createsuperuser
 ```
 
 ### Рекомендации
 
 #### Перед первым запуском убедитесь, что порт 5432 свободен для PostgreSQL.
+
+
+### URLs проекта
+- Главная страница приложения http://localhost:8000/admin/
+- Админка Django http://localhost:8000/
