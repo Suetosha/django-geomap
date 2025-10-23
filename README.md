@@ -41,7 +41,7 @@ DB_PORT=5432
 ```bash
 docker-compose up -d
 ```
-
+```
 ### 4. Создание django admin superuser через docker контейнер
 docker exec -it container_id python manage.py createsuperuser
 ```
