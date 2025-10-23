@@ -17,7 +17,12 @@
 - CKEditor
 - django-admin-sortable2
 
-## Установка и запуск
+# URLs проекта
+- Главная страница приложения http://34.122.197.212:8000/
+- Админка Django http://34.122.197.212:8000/admin/
+login - user, password - 123
+
+## Локальная установка и запуск проекта
 
 ### 1. Клонируйте репозиторий
 ```bash
@@ -50,8 +55,3 @@ docker exec -it container_id python manage.py createsuperuser
 ### Рекомендации
 
 #### Перед первым запуском убедитесь, что порт 5432 свободен для PostgreSQL.
-
-
-### URLs проекта
-- Главная страница приложения http://localhost:8000/admin/
-- Админка Django http://localhost:8000/
